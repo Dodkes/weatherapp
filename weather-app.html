@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="weather-app.css">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+    <title>Weather app</title>
+</head>
+<body>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" onclick="active(this.id)" id="table-tab">Table</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="active(this.id)" id="chart-tab">Chart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="active(this.id)" id="calculator-tab">Heat index calculator</a>
+        </li>
+      </ul>
+
+      <div class="table-container">
+          <table>
+            <tr>
+                <th>Datetime</th>
+                <th>Weather State</th>
+                <th>Temperature</th>
+                <th>Air Pressure</th>
+                <th>Humidity</th>
+            </tr>
+          </table>
+      </div>
+
+      <div class="chart-container">
+          <h1>Chart</h1>
+      </div>
+
+      <div class="calculator-container">
+          <h1>Heat index calculator</h1>
+          <button class="btn btn-primary" id="celsius-button">Select ℃</button>
+          <button class="btn btn-secondary" id="fahrenheit-button">Select &#8457</button>
+          
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Temperature</span>
+          </div>
+          <input type="text" placeholder="Select units first" id="temp-input" size="20">
+            </div><br>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Humidity</span>
+                </div>
+            <input type="text" placeholder="Enter %" id="humidity-input" size="23">
+            </div>
+            <button class="btn btn-success" onclick="calculate()">Calculate</button>
+            <h5 id="index-result"></h5>
+    </div>
+
+    <script src="weather-app.js"></script>
+</body>
+</html>
