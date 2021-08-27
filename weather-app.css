@@ -30,9 +30,54 @@ button{
 
 }
 
+canvas{
+    width: 100%;
+    max-width: 1000px;
+    float: left;
+
+}
+
 .table-container, .chart-container, .calculator-container{
     display: none;
     text-align: center;
 }
 
+.chart-container{
+    margin: auto;
+    width: 60%;
+}
 
+#legend{
+    position: absolute;
+    top: 30vh;
+    left: 15vh;
+    color: rgba(0,0,255,0.6);
+}
+
+.history{
+    border-radius: 10px 0 0 10px;
+    background-color: rgba(0,0,0,0.3);
+    position: fixed;
+    padding: 10px;
+    top: 15vh;
+    right: 0;
+}
+
+i{
+    color: white;
+    text-shadow: 10px 10px 10px black;
+}
+
+i:hover{
+    cursor: pointer;
+    color: black;
+    transition: 0.5s;
+}
+
+td{
+    background-color: rgba(0,0,255,0.2);
+}
+
+th{
+    background-color: rgba(0,0,255,0.6);
+}

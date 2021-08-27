@@ -5,18 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="weather-app.css">
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/1f1400aac2.js" crossorigin="anonymous"></script>
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+    <!-- chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
     <title>Weather app</title>
 </head>
 <body>
+  <!-- navigation -->
     <ul class="nav nav-tabs">
         <li class="nav-item">
-          <a class="nav-link active" href="#" onclick="active(this.id)" id="table-tab">Table</a>
+          <a class="nav-link" href="#" onclick="active(this.id)" id="table-tab">Table</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" onclick="active(this.id)" id="chart-tab">Chart</a>
@@ -25,9 +32,10 @@
           <a class="nav-link" href="#" onclick="active(this.id)" id="calculator-tab">Heat index calculator</a>
         </li>
       </ul>
-
+<!-- table tab -->
       <div class="table-container">
-          <table>
+        <p id="demo"></p>
+          <table class="table table-bordered">
             <tr>
                 <th>Datetime</th>
                 <th>Weather State</th>
@@ -35,34 +43,44 @@
                 <th>Air Pressure</th>
                 <th>Humidity</th>
             </tr>
+            <tbody id="inputData">
+
+            </tbody>
           </table>
       </div>
-
+<!-- chart tab -->
       <div class="chart-container">
           <h1>Chart</h1>
+          <div id="legend">temperature</div>
+          <canvas id="weatherChart"></canvas>
       </div>
-
+<!-- calculator tab -->
       <div class="calculator-container">
           <h1>Heat index calculator</h1>
           <button class="btn btn-primary" id="celsius-button">Select ℃</button>
           <button class="btn btn-secondary" id="fahrenheit-button">Select &#8457</button>
-          
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">Temperature</span>
           </div>
           <input type="text" placeholder="Select units first" id="temp-input" size="20">
             </div><br>
+            <!-- history -->
+            <div class="history">
+              <i class="fas fa-history" title="Show history" onclick="historyFunction()"></i>
+            </div>
+            <!-- history -->
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Humidity</span>
                 </div>
             <input type="text" placeholder="Enter %" id="humidity-input" size="23">
             </div>
-            <button class="btn btn-success" onclick="calculate()">Calculate</button>
+            <button class="btn btn-dark" onclick="calculate()">Calculate</button>
             <h5 id="index-result"></h5>
     </div>
 
+    <script src="JSON.js"></script>
     <script src="weather-app.js"></script>
 </body>
 </html>

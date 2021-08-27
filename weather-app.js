@@ -79,3 +79,59 @@ function indexCalculation(T){
     + (8.5282 * 10**-4* T * humidity**2) - (1.99 * 10**-6 * T**2 * humidity**2);
     document.getElementById("index-result").textContent = "Heat Index is " + heatIndex;
 }
+
+tableData(arrayData);
+
+function tableData(data){
+    var tableId = document.getElementById("inputData");
+
+    for(var i = 0; i < data.length; i++){
+        var row = "<tr>"+"<td>" + data[i].applicable_date + "</td>"
+        +"<td>"+ data[i].weather_state_name+"</td>"
+        +"<td>"+ data[i].the_temp+"</td>"
+        +"<td>"+ data[i].air_pressure+"</td>"
+        +"<td>"+ data[i].humidity+"</td>"
+        +"</tr>";
+        tableId.innerHTML += row;
+    }
+}
+
+// CHART
+var xValues =   [arrayData[0].applicable_date, 
+                arrayData[1].applicable_date,
+                arrayData[2].applicable_date,
+                arrayData[3].applicable_date,
+                arrayData[4].applicable_date,]
+
+var yValues =   [arrayData[0].the_temp, 
+                arrayData[1].the_temp,
+                arrayData[2].the_temp,
+                arrayData[3].the_temp,
+                arrayData[4].the_temp,]
+
+var myChart = new Chart("weatherChart", {
+    type: "line",
+    data: {
+        labels: xValues,
+        datasets: [{
+        pointRadius: 4,
+        fill: true,
+        backgroundColor: "rgba(0,0,255,0.2)",
+        borderColor: "rgba(0,0,255,0.6)",
+        data: yValues
+        }]
+    },
+    options: {
+        legend: {display: false},
+        scales: {
+            yAxes: [{ticks: {min: 7, max:14}}],
+          }
+    }
+  });
+
+//   history function
+
+function historyFunction(){
+    alert("sa")
+}
+
