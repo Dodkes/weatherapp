@@ -33,11 +33,10 @@ button{
 canvas{
     width: 100%;
     max-width: 1000px;
-    float: left;
-
+    margin: auto;
 }
 
-.table-container, .chart-container, .calculator-container{
+.table-container, .chart-container, .calculator-container, ul{
     display: none;
     text-align: center;
 }
@@ -54,11 +53,11 @@ canvas{
     color: rgba(0,0,255,0.6);
 }
 
-.history{
+.history-container{
     border-radius: 10px 0 0 10px;
     background-color: rgba(0,0,0,0.3);
     position: fixed;
-    padding: 10px;
+    padding: 20px;
     top: 15vh;
     right: 0;
 }
@@ -81,3 +80,18 @@ td{
 th{
     background-color: rgba(0,0,255,0.6);
 }
+
+li> #historyList, #historyList{
+    font-weight: bold;
+    list-style-type: none;
+}
+
+ol{
+    display: none;
+}
+
+.alert{
+    display: none;
+}
+
+

@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="weather-app.css">
+    <!-- shrotcut icon -->
+    <link rel="shortcut icon" href="https://www.metaweather.com/static/img/weather/sn.svg">
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/1f1400aac2.js" crossorigin="anonymous"></script>
     <!-- JQuery -->
@@ -44,7 +46,6 @@
                 <th>Humidity</th>
             </tr>
             <tbody id="inputData">
-
             </tbody>
           </table>
       </div>
@@ -66,8 +67,15 @@
           <input type="text" placeholder="Select units first" id="temp-input" size="20">
             </div><br>
             <!-- history -->
-            <div class="history">
-              <i class="fas fa-history" title="Show history" onclick="historyFunction()"></i>
+            <div class="history-container">
+              <i class="fas fa-history" title="Show history"></i>
+              <ol id="historyList">
+                <li id="first-item"></li>
+                <li id="second-item"></li>
+                <li id="third-item"></li>
+                <li id="fourth-item"></li>
+                <li id="fifth-item"></li>
+              </ol>
             </div>
             <!-- history -->
             <div class="input-group">
@@ -78,6 +86,9 @@
             </div>
             <button class="btn btn-dark" onclick="calculate()">Calculate</button>
             <h5 id="index-result"></h5>
+            <div class="alert alert-primary">
+              <strong>Invalid input! </strong><span id="error"></span>
+            </div>
     </div>
 
     <script src="JSON.js"></script>
