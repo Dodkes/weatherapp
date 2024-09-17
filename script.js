@@ -1,7 +1,10 @@
 var unity;
 var historyId = document.getElementById("historyList");
-var historyArray = [];
 var errorMessage = document.getElementById("error");
+
+const historyArray = localStorage.getItem("history")
+  ? JSON.parse(localStorage.getItem("history"))
+  : [];
 
 function active(id) {
   if (id == "table-tab") {
@@ -89,8 +92,8 @@ function calculate() {
 }
 
 function indexCalculation(T) {
-  var humidity = document.getElementById("humidity-input").value;
-  var heatIndex =
+  const humidity = document.getElementById("humidity-input").value;
+  const heatIndex =
     -42.379 +
     2.04901523 * T +
     10.14333127 * humidity -
@@ -100,17 +103,20 @@ function indexCalculation(T) {
     1.22874 * 10 ** -3 * T ** 2 * humidity +
     8.5282 * 10 ** -4 * T * humidity ** 2 -
     1.99 * 10 ** -6 * T ** 2 * humidity ** 2;
-  document.getElementById("index-result").textContent =
-    "Heat Index is " + heatIndex;
-  //history remember
-  if (historyArray.length == 5) {
-    historyArray.shift();
+
+  document.getElementById(
+    "index-result"
+  ).textContent = `Heat Index is ${heatIndex}`;
+
+  if (historyArray.length === 5) {
+    historyArray.pop();
     historyArray.push(heatIndex);
   } else if (historyArray.length < 5) {
     historyArray.push(heatIndex);
   }
+  localStorage.setItem("history", JSON.stringify(historyArray));
   hideErrorContainer();
-  update();
+  updateHistory();
 }
 
 tableData(arrayData);
@@ -180,18 +186,12 @@ var myChart = new Chart("weatherChart", {
   },
 });
 
-// history display
-$(".fas").click(function () {
-  update();
-  $("#historyList").slideToggle(1000);
-});
+function updateHistory() {
+  const historyLine = document.querySelectorAll("#historyList li");
 
-function update() {
-  document.getElementById("first-item").textContent = historyArray[4];
-  document.getElementById("second-item").textContent = historyArray[3];
-  document.getElementById("third-item").textContent = historyArray[2];
-  document.getElementById("fourth-item").textContent = historyArray[1];
-  document.getElementById("fifth-item").textContent = historyArray[0];
+  historyLine.forEach((item, index) => {
+    item.textContent = Math.round(historyArray[index]);
+  });
 }
 
 function showErrorContainer() {

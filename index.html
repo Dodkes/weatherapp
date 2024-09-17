@@ -62,17 +62,17 @@
             <div class="input-group-prepend">
               <span class="input-group-text">Temperature</span>
           </div>
-          <input type="text" placeholder="Select units first" id="temp-input" size="20">
+          <input type="number" placeholder="Select units first" id="temp-input" size="20">
             </div><br>
             <!-- history -->
             <div class="history-container">
               <i class="fas fa-history" title="Show history"></i>
               <ol id="historyList">
-                <li id="first-item"></li>
-                <li id="second-item"></li>
-                <li id="third-item"></li>
-                <li id="fourth-item"></li>
-                <li id="fifth-item"></li>
+                <li id="1"></li>
+                <li id="2"></li>
+                <li id="3"></li>
+                <li id="4"></li>
+                <li id="5"></li>
               </ol>
             </div>
             <!-- history -->
@@ -80,7 +80,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Humidity</span>
                 </div>
-            <input type="text" placeholder="Enter %" id="humidity-input" size="23">
+            <input type="number" placeholder="Enter %" id="humidity-input" size="23">
             </div>
             <button class="btn btn-dark" onclick="calculate()">Calculate</button>
             <h5 id="index-result"></h5>
