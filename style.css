@@ -27,9 +27,8 @@ h1 {
 
 button {
   padding: 20px;
-  display: inline-block;
   transition: 0.5s;
-  box-shadow: 2px 2px 2px black;
+  box-shadow: 2px 2px 5px black;
 }
 
 canvas {
@@ -72,12 +71,6 @@ i {
   text-shadow: 10px 10px 10px black;
 }
 
-i:hover {
-  cursor: pointer;
-  color: black;
-  transition: 0.5s;
-}
-
 td {
   background-color: rgba(0, 0, 255, 0.2);
 }
@@ -85,10 +78,6 @@ td {
 th {
   background-color: rgba(0, 0, 255, 0.6);
 }
-
-/* ol {
-  display: none;
-} */
 
 .alert {
   display: none;
