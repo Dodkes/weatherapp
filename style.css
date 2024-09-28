@@ -41,6 +41,10 @@ canvas {
   transform: translate(-50%);
 }
 
+i {
+  margin-right: 0.5rem;
+}
+
 .input-group {
   display: flex;
   justify-content: center;
