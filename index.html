@@ -40,12 +40,12 @@
           <p id="demo"></p>
             <table class="table table-bordered">
               <tr id="table-heading">
-                  <th><i class="fa-solid fa-city"></i> City</th>
-                  <th><i class="fa-regular fa-clock"></i>Time</th>
-                  <th><i class="fa-solid fa-temperature-three-quarters"></i> Temperature</th>
-                  <th><i class="fa fa-cloud"></i> Sky</th>
-                  <th><i class="fa-sharp fa-solid fa-wind"></i> Wind speed</th>
-                  <th><i class="fa-sharp fa-solid fa-droplet"></i> Humidity</th>
+                  <th><i class="fa-solid fa-city"></i> <p>City</p></th>
+                  <th><i class="fa-regular fa-clock"></i><p>Time</p></th>
+                  <th><i class="fa-solid fa-temperature-three-quarters"></i><p>Temperature</p></th>
+                  <th><i class="fa fa-cloud"></i><p>Sky</p></th>
+                  <th><i class="fa-sharp fa-solid fa-wind"></i><p>Wind speed</p></th>
+                  <th><i class="fa-sharp fa-solid fa-droplet"></i><p>Humidity</p></th>
               </tr>
               <tbody id="input-data"></tbody>
             </table>
@@ -54,6 +54,7 @@
       <div class="tab-pane fade" id="chart" role="tabpanel" aria-labelledby="chart-tab">
         <div class="chart-container">
           <h1>Chart</h1>
+          <i id="chart-icon" class="fa-solid fa-temperature-three-quarters"></i>
           <select id="chart-select-element">
             <option value="temperature" selected>Temperature ℃</option>
             <option value="wind-speed">Wind speed m/s</option>

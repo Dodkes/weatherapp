@@ -4,6 +4,7 @@ const fahrenheitButton = document.getElementById("fahrenheit-button");
 const temperatureInput = document.getElementById("temp-input");
 const humidityInput = document.getElementById("humidity-input");
 const messageBlock = document.getElementById("message");
+const chartIcon = document.getElementById("chart-icon");
 
 const API_KEY = "6d8196f13596e796cae0b37daa47d6d5";
 let units;
@@ -217,6 +218,14 @@ selectChart.addEventListener("change", function () {
 });
 
 function renderChart(yValues, rgb, unit) {
+  if (unit === "°C") {
+    chartIcon.className = "fa-solid fa-temperature-three-quarters";
+  } else if (unit === "%") {
+    chartIcon.className = "fa-sharp fa-solid fa-droplet";
+  } else if (unit === "m/s") {
+    chartIcon.className = "fa-sharp fa-solid fa-wind";
+  }
+
   const xValues = data.map((item) => item.name);
   let [minScale, maxScale] = [
     Math.floor(Math.min(...yValues) - 5),
