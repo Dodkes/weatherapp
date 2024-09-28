@@ -21,33 +21,66 @@ fahrenheitButton.addEventListener("click", () => {
 });
 
 async function getAPI() {
-  const promise_1 = fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${"Kosice"},SK&appid=${API_KEY}&units=metric`
+  const promise_kosice = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=Kosice,SK&appid=${API_KEY}&units=metric`
   );
-  const promise_2 = fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${"Bratislava"},SK&appid=${API_KEY}&units=metric`
-  );
-
-  const promise_3 = fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${"Michalovce"},SK&appid=${API_KEY}&units=metric`
+  const promise_bratislava = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=Bratislava,SK&appid=${API_KEY}&units=metric`
   );
 
-  const promise_4 = fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${"Modra"},SK&appid=${API_KEY}&units=metric`
+  const promise_michalovce = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=Michalovce,SK&appid=${API_KEY}&units=metric`
   );
 
-  const [response_1, response_2, response_3, response_4] = await Promise.all([
-    promise_1,
-    promise_2,
-    promise_3,
-    promise_4,
+  const promise_modra = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=Modra,SK&appid=${API_KEY}&units=metric`
+  );
+
+  const promise_vinne = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=Vinne,SK&appid=${API_KEY}&units=metric`
+  );
+
+  const promise_rome = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=Rome,IT&appid=${API_KEY}&units=metric`
+  );
+
+  const promise_leeds = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=Leeds,UK&appid=${API_KEY}&units=metric`
+  );
+
+  const promise_brisbane = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=Brisbane,AU&appid=${API_KEY}&units=metric`
+  );
+
+  const [
+    response_kosice,
+    response_bratislava,
+    response_michalovce,
+    response_modra,
+    response_vinne,
+    response_rome,
+    response_leeds,
+    response_brisbane,
+  ] = await Promise.all([
+    promise_kosice,
+    promise_bratislava,
+    promise_michalovce,
+    promise_modra,
+    promise_vinne,
+    promise_rome,
+    promise_leeds,
+    promise_brisbane,
   ]);
 
   data = [
-    await response_1.json(),
-    await response_2.json(),
-    await response_3.json(),
-    await response_4.json(),
+    await response_kosice.json(),
+    await response_bratislava.json(),
+    await response_modra.json(),
+    await response_vinne.json(),
+    await response_michalovce.json(),
+    await response_rome.json(),
+    await response_leeds.json(),
+    await response_brisbane.json(),
   ];
   tableData(data);
   renderChart(
@@ -179,6 +212,7 @@ function renderChart(yValues, rgb, unit) {
   ];
 
   unit === "%" && ([minScale, maxScale] = [0, 100]);
+  unit === "m/s" && (minScale = 0);
 
   myChart && myChart.destroy();
 
