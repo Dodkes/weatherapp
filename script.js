@@ -61,41 +61,6 @@ const historyArray = localStorage.getItem("history")
   ? JSON.parse(localStorage.getItem("history"))
   : [];
 
-function active(id) {
-  if (id == "table-tab") {
-    $("#chart-tab").removeClass("active");
-    $("#table-tab").addClass("active");
-    $("#calculator-tab").removeClass("active");
-    conatinersReveal(id);
-  } else if (id == "chart-tab") {
-    $("#chart-tab").addClass("active");
-    $("#table-tab").removeClass("active");
-    $("#calculator-tab").removeClass("active");
-    conatinersReveal(id);
-  } else if (id == "calculator-tab") {
-    $("#chart-tab").removeClass("active");
-    $("#table-tab").removeClass("active");
-    $("#calculator-tab").addClass("active");
-    conatinersReveal(id);
-  }
-}
-
-function conatinersReveal(id) {
-  if (id == "table-tab") {
-    $(".table-container").css("display", "block");
-    $(".chart-container").css("display", "none");
-    $(".calculator-container").css("display", "none");
-  } else if (id == "chart-tab") {
-    $(".table-container").css("display", "none");
-    $(".chart-container").css("display", "block");
-    $(".calculator-container").css("display", "none");
-  } else if (id == "calculator-tab") {
-    $(".table-container").css("display", "none");
-    $(".chart-container").css("display", "none");
-    $(".calculator-container").css("display", "block");
-  }
-}
-
 function validate() {
   const temperature = temperatureInput.value;
   const humidity = humidityInput.value;
@@ -153,7 +118,7 @@ function indexCalculation(T) {
 }
 
 function tableData(data) {
-  const tableId = document.getElementById("inputData");
+  const tableId = document.getElementById("input-data");
 
   for (var i = 0; i < data.length; i++) {
     var row =
@@ -234,7 +199,6 @@ function renderChart(yValues, rgb) {
   });
 }
 
-updateHistory();
 function updateHistory() {
   const reversedHistory = historyArray.slice().reverse();
 
@@ -242,6 +206,7 @@ function updateHistory() {
     $(`#${index + 1}`).text(item);
   });
 }
+updateHistory();
 
 function showErrorContainer(message) {
   $(".alert").css("display", "block");

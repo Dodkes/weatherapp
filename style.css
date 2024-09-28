@@ -12,6 +12,7 @@ h1 {
 .table-container,
 .chart-container,
 .calculator-container {
+  text-align: center;
   margin: 10px;
 }
 
@@ -37,26 +38,6 @@ canvas {
   margin: auto;
 }
 
-.table-container,
-.chart-container,
-.calculator-container,
-ul {
-  display: none;
-  text-align: center;
-}
-
-.chart-container {
-  margin: auto;
-  width: 60%;
-}
-
-#legend {
-  position: absolute;
-  top: 30vh;
-  left: 15vh;
-  color: rgba(0, 0, 255, 0.6);
-}
-
 .history-container {
   border-radius: 5px 0 0 5px;
   border: 1px solid black;
@@ -71,11 +52,11 @@ i {
   text-shadow: 10px 10px 10px black;
 }
 
-td {
+#input-data {
   background-color: rgba(0, 0, 255, 0.2);
 }
 
-th {
+#table-heading {
   background-color: rgba(0, 0, 255, 0.6);
 }
 

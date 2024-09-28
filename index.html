@@ -8,8 +8,10 @@
     <script src="https://kit.fontawesome.com/1f1400aac2.js" crossorigin="anonymous"></script>
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS (includes Popper.js for dynamic content handling) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
@@ -19,35 +21,40 @@
     <title>Weather app</title>
 </head>
 <body>
-  <!-- navigation -->
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link" href="#" onclick="active(this.id)" id="table-tab">Table</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" onclick="active(this.id)" id="chart-tab">Chart</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" onclick="active(this.id)" id="calculator-tab">Heat index calculator</a>
-        </li>
-      </ul>
-      <!-- table tab -->
-      <div class="table-container">
-        <p id="demo"></p>
-          <table class="table table-bordered">
-            <tr>
-                <th>City</th>
-                <th>Temperature</th>
-                <th>Sky</th>
-                <th>Wind speed</th>
-                <th>Humidity</th>
-            </tr>
-            <tbody id="inputData">
-            </tbody>
-          </table>
+  
+  <div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="table-tab" data-bs-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="true">Table</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="chart-tab" data-bs-toggle="tab" href="#chart" role="tab" aria-controls="chart" aria-selected="false">Chart</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="heat-index-tab" data-bs-toggle="tab" href="#heat-index" role="tab" aria-controls="heat-index" aria-selected="false">Heat index</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="table" role="tabpanel" aria-labelledby="table-tab">
+        <div class="table-container">
+          <p id="demo"></p>
+            <table class="table table-bordered">
+              <tr id="table-heading">
+                  <th>City</th>
+                  <th>Temperature</th>
+                  <th>Sky</th>
+                  <th>Wind speed</th>
+                  <th>Humidity</th>
+              </tr>
+              <tbody id="input-data"></tbody>
+            </table>
+        </div>
       </div>
-      <!-- chart tab -->
-      <div class="chart-container">
+      <div class="tab-pane fade" id="chart" role="tabpanel" aria-labelledby="chart-tab">
+        <div class="chart-container">
           <h1>Chart</h1>
           <select id="chart-select-element">
             <option value="temperature" selected>Temperature ℃</option>
@@ -56,8 +63,9 @@
           </select>
           <canvas id="weatherChart"></canvas>
       </div>
-      <!-- calculator tab -->
-      <div class="calculator-container">
+      </div>
+      <div class="tab-pane fade" id="heat-index" role="tabpanel" aria-labelledby="heat-index-tab">
+        <div class="calculator-container">
           <h1>Heat index calculator</h1>
           <button class="btn btn-primary" id="celsius-button">Select ℃</button>
           <button class="btn btn-secondary" id="fahrenheit-button">Select &#8457</button>
@@ -90,6 +98,9 @@
             <div class="alert alert-primary">
               <strong>Invalid input! </strong><span id="error"></span>
             </div>
+        </div>
+      </div>
     </div>
+  </div>
 </body>
 </html>
