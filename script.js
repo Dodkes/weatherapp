@@ -7,6 +7,7 @@ const humidityInput = document.getElementById("humidity-input");
 const API_KEY = "6d8196f13596e796cae0b37daa47d6d5";
 let units;
 let data;
+let myChart;
 
 celsiusButton.addEventListener("click", () => {
   units = "celsius";
@@ -48,7 +49,7 @@ async function getAPI() {
     await response_4.json(),
   ];
   tableData(data);
-  renderChart(data);
+  // renderChart(data);
 }
 
 getAPI();
@@ -148,10 +149,6 @@ function indexCalculation(T) {
   hideErrorContainer();
 }
 
-selectChart.addEventListener("change", function () {
-  console.log(selectChart.value);
-});
-
 function tableData(data) {
   const tableId = document.getElementById("inputData");
 
@@ -180,14 +177,30 @@ function tableData(data) {
   }
 }
 
-function renderChart(data) {
+selectChart.addEventListener("change", function () {
+  switch (selectChart.value) {
+    case "temperature":
+      renderChart(data.map((item) => item.main.temp));
+      break;
+    case "humidity":
+      renderChart(data.map((item) => item.main.humidity));
+      break;
+    case "wind-speed":
+      renderChart(data.map((item) => item.wind.speed));
+      break;
+    default:
+  }
+});
+
+function renderChart(yValues) {
   const xValues = data.map((item) => item.name);
-  const yValues = data.map((item) => item.main.temp);
   const minScale = Math.min(...yValues) - 5;
   const maxScale = Math.max(...yValues) + 5;
 
-  new Chart("weatherChart", {
-    type: "line",
+  myChart && myChart.destroy();
+
+  myChart = new Chart("weatherChart", {
+    type: "bar",
     data: {
       labels: xValues,
       datasets: [
