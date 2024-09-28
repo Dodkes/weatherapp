@@ -41,10 +41,6 @@ canvas {
   transform: translate(-50%);
 }
 
-i {
-  padding-right: 0.5rem;
-}
-
 .input-group {
   display: flex;
   justify-content: center;
