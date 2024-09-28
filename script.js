@@ -52,7 +52,8 @@ async function getAPI() {
   tableData(data);
   renderChart(
     data.map((item) => item.main.temp),
-    "255, 0, 0"
+    "255, 0, 0",
+    "°C"
   );
 }
 
@@ -148,29 +149,36 @@ selectChart.addEventListener("change", function () {
     case "temperature":
       renderChart(
         data.map((item) => item.main.temp),
-        "255, 0, 0"
+        "255, 0, 0",
+        "°C"
       );
       break;
     case "humidity":
       renderChart(
         data.map((item) => item.main.humidity),
-        "0, 0, 255"
+        "0, 0, 255",
+        "%"
       );
       break;
     case "wind-speed":
       renderChart(
         data.map((item) => item.wind.speed),
-        "0, 0, 0"
+        "0, 0, 0",
+        "m/s"
       );
       break;
     default:
   }
 });
 
-function renderChart(yValues, rgb) {
+function renderChart(yValues, rgb, unit) {
   const xValues = data.map((item) => item.name);
-  const minScale = Math.min(...yValues) - 5;
-  const maxScale = Math.max(...yValues) + 5;
+  let [minScale, maxScale] = [
+    Math.floor(Math.min(...yValues) - 5),
+    Math.floor(Math.max(...yValues) + 5),
+  ];
+
+  unit === "%" && ([minScale, maxScale] = [0, 100]);
 
   myChart && myChart.destroy();
 
@@ -189,9 +197,26 @@ function renderChart(yValues, rgb) {
       ],
     },
     options: {
+      tooltips: {
+        callbacks: {
+          label: (value) => {
+            return `${value.yLabel} ${unit}`;
+          },
+        },
+      },
       legend: { display: false },
       scales: {
-        yAxes: [{ ticks: { min: minScale, max: maxScale } }],
+        yAxes: [
+          {
+            ticks: {
+              min: minScale,
+              max: maxScale,
+              callback: (value) => {
+                return `${value} ${unit}`;
+              },
+            },
+          },
+        ],
       },
     },
   });
