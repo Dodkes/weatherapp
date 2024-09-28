@@ -151,12 +151,16 @@ function indexCalculation(T) {
 
 function tableData(data) {
   const tableId = document.getElementById("input-data");
+  let ms = Date.now();
 
   for (var i = 0; i < data.length; i++) {
     var row =
       "<tr>" +
       "<td>" +
       data[i].name +
+      "</td>" +
+      "<td>" +
+      getTime(data[i].timezone) +
       "</td>" +
       "<td>" +
       data[i].main.temp +
@@ -174,6 +178,14 @@ function tableData(data) {
       "%";
     "</td>" + "</tr>";
     tableId.innerHTML += row;
+  }
+
+  function getTime(timezone) {
+    const time = new Date(ms + timezone * 1000);
+
+    return `${time.getDate()}. ${
+      time.getMonth() + 1
+    }. - ${time.getHours()}:${time.getMinutes()} h`;
   }
 }
 
