@@ -49,7 +49,10 @@ async function getAPI() {
     await response_4.json(),
   ];
   tableData(data);
-  // renderChart(data);
+  renderChart(
+    data.map((item) => item.main.temp),
+    "255, 0, 0"
+  );
 }
 
 getAPI();
@@ -180,19 +183,28 @@ function tableData(data) {
 selectChart.addEventListener("change", function () {
   switch (selectChart.value) {
     case "temperature":
-      renderChart(data.map((item) => item.main.temp));
+      renderChart(
+        data.map((item) => item.main.temp),
+        "255, 0, 0"
+      );
       break;
     case "humidity":
-      renderChart(data.map((item) => item.main.humidity));
+      renderChart(
+        data.map((item) => item.main.humidity),
+        "0, 0, 255"
+      );
       break;
     case "wind-speed":
-      renderChart(data.map((item) => item.wind.speed));
+      renderChart(
+        data.map((item) => item.wind.speed),
+        "0, 0, 0"
+      );
       break;
     default:
   }
 });
 
-function renderChart(yValues) {
+function renderChart(yValues, rgb) {
   const xValues = data.map((item) => item.name);
   const minScale = Math.min(...yValues) - 5;
   const maxScale = Math.max(...yValues) + 5;
@@ -207,8 +219,8 @@ function renderChart(yValues) {
         {
           pointRadius: 4,
           fill: true,
-          backgroundColor: "rgba(0, 0, 255, 0.2)",
-          borderColor: "rgba(0, 0, 255, 1)",
+          backgroundColor: `rgba(${rgb}, 0.4)`,
+          borderColor: `rgba(${rgb}, 1)`,
           data: yValues,
         },
       ],
