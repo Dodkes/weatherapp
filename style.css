@@ -55,10 +55,6 @@ canvas {
   background-color: rgba(0, 0, 255, 0.6);
 }
 
-.alert {
-  display: none;
-}
-
 @media screen and (max-width: 900px) {
   canvas {
     max-width: 100%;

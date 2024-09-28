@@ -66,17 +66,17 @@ function validate() {
   const humidity = humidityInput.value;
 
   if (!units) {
-    showErrorContainer("Select units");
+    userMessage("Select units");
   } else if (units == "celsius" && temperature < 26.7) {
-    return showErrorContainer(
+    return userMessage(
       "Index can not be calculated for temperature less than 26.7 °C"
     );
   } else if (units == "fahrenheit" && temperature < 80) {
-    return showErrorContainer(
+    return userMessage(
       "Index can not be calculated for temperature less than 80 °F"
     );
   } else if (humidity < 0 || humidity > 100) {
-    showErrorContainer(
+    userMessage(
       "Humidity is a percentage value. Please enter value between 100 - 0"
     );
   } else if (units == "celsius") {
@@ -101,9 +101,7 @@ function indexCalculation(T) {
     8.5282 * 10 ** -4 * T * humidity ** 2 -
     1.99 * 10 ** -6 * T ** 2 * humidity ** 2;
 
-  document.getElementById(
-    "index-result"
-  ).textContent = `Heat Index is ${heatIndex}`;
+  document.getElementById("message").textContent = `Heat Index is ${heatIndex}`;
 
   //local storage
   if (historyArray.length === 5) {
@@ -114,7 +112,6 @@ function indexCalculation(T) {
   }
   localStorage.setItem("history", JSON.stringify(historyArray));
   updateHistory();
-  hideErrorContainer();
 }
 
 function tableData(data) {
@@ -208,11 +205,6 @@ function updateHistory() {
 }
 updateHistory();
 
-function showErrorContainer(message) {
-  $(".alert").css("display", "block");
-  $("#error").text(message);
-}
-
-function hideErrorContainer() {
-  $(".alert").css("display", "none");
+function userMessage(message) {
+  $("#message").text(message);
 }
