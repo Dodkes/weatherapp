@@ -183,9 +183,9 @@ function tableData(data) {
     const ms = Date.now();
     const time = new Date(ms + (timezone - 7200) * 1000);
 
-    return `${time.getDate()}. ${
-      time.getMonth() + 1
-    }. - ${time.getHours()}:${time.getMinutes()} h`;
+    return `${time.getDate()}. ${time.getMonth() + 1}. - ${time.getHours()}:${
+      time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes()
+    } h`;
   }
 }
 
