@@ -1,6 +1,22 @@
+const selectChart = document.getElementById("chart-select-element");
+const celsiusButton = document.getElementById("celsius-button");
+const fahrenheitButton = document.getElementById("fahrenheit-button");
+const temperatureInput = document.getElementById("temp-input");
+const humidityInput = document.getElementById("humidity-input");
+
 const API_KEY = "6d8196f13596e796cae0b37daa47d6d5";
 let units;
 let data;
+
+celsiusButton.addEventListener("click", () => {
+  units = "celsius";
+  temperatureInput.placeholder = "Enter ℃";
+});
+
+fahrenheitButton.addEventListener("click", () => {
+  units = "fahrenheit";
+  temperatureInput.placeholder = "Enter ℉";
+});
 
 async function getAPI() {
   const promise_1 = fetch(
@@ -31,8 +47,8 @@ async function getAPI() {
     await response_3.json(),
     await response_4.json(),
   ];
-  console.log(data);
   tableData(data);
+  renderChart(data);
 }
 
 getAPI();
@@ -76,29 +92,9 @@ function conatinersReveal(id) {
   }
 }
 
-$("#celsius-button").click(function () {
-  $("#temp-input").attr("placeholder", "Enter ℃");
-});
-
-$("#fahrenheit-button").click(function () {
-  $("#temp-input").attr("placeholder", "Enter °F");
-});
-
-document
-  .getElementById("celsius-button")
-  .addEventListener("click", function () {
-    units = "celsius";
-  });
-
-document
-  .getElementById("fahrenheit-button")
-  .addEventListener("click", function () {
-    units = "fahrenheit";
-  });
-
 function validate() {
-  const temperature = document.getElementById("temp-input").value;
-  const humidity = document.getElementById("humidity-input").value;
+  const temperature = temperatureInput.value;
+  const humidity = humidityInput.value;
 
   if (!units) {
     showErrorContainer("Select units");
@@ -152,6 +148,10 @@ function indexCalculation(T) {
   hideErrorContainer();
 }
 
+selectChart.addEventListener("change", function () {
+  console.log(selectChart.value);
+});
+
 function tableData(data) {
   const tableId = document.getElementById("inputData");
 
@@ -180,44 +180,34 @@ function tableData(data) {
   }
 }
 
-// CHART
-var xValues = [
-  arrayData[0].applicable_date,
-  arrayData[1].applicable_date,
-  arrayData[2].applicable_date,
-  arrayData[3].applicable_date,
-  arrayData[4].applicable_date,
-];
+function renderChart(data) {
+  const xValues = data.map((item) => item.name);
+  const yValues = data.map((item) => item.main.temp);
+  const minScale = Math.min(...yValues) - 5;
+  const maxScale = Math.max(...yValues) + 5;
 
-var yValues = [
-  arrayData[0].the_temp,
-  arrayData[1].the_temp,
-  arrayData[2].the_temp,
-  arrayData[3].the_temp,
-  arrayData[4].the_temp,
-];
-
-var myChart = new Chart("weatherChart", {
-  type: "line",
-  data: {
-    labels: xValues,
-    datasets: [
-      {
-        pointRadius: 4,
-        fill: true,
-        backgroundColor: "rgba(0,0,255,0.2)",
-        borderColor: "rgba(0,0,255,0.6)",
-        data: yValues,
-      },
-    ],
-  },
-  options: {
-    legend: { display: false },
-    scales: {
-      yAxes: [{ ticks: { min: 7, max: 14 } }],
+  new Chart("weatherChart", {
+    type: "line",
+    data: {
+      labels: xValues,
+      datasets: [
+        {
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: "rgba(0, 0, 255, 0.2)",
+          borderColor: "rgba(0, 0, 255, 1)",
+          data: yValues,
+        },
+      ],
     },
-  },
-});
+    options: {
+      legend: { display: false },
+      scales: {
+        yAxes: [{ ticks: { min: minScale, max: maxScale } }],
+      },
+    },
+  });
+}
 
 updateHistory();
 function updateHistory() {
