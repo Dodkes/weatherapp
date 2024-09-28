@@ -151,7 +151,6 @@ function indexCalculation(T) {
 
 function tableData(data) {
   const tableId = document.getElementById("input-data");
-  let ms = Date.now();
 
   for (var i = 0; i < data.length; i++) {
     var row =
@@ -181,7 +180,8 @@ function tableData(data) {
   }
 
   function getTime(timezone) {
-    const time = new Date(ms + timezone * 1000);
+    const ms = Date.now();
+    const time = new Date(ms + (timezone - 7200) * 1000);
 
     return `${time.getDate()}. ${
       time.getMonth() + 1
