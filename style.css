@@ -21,9 +21,8 @@ h1 {
   text-shadow: 2px 2px 4px grey;
 }
 
-.tabs-container {
-  position: relative;
-  width: 100%;
+#accordionFlushExample {
+  margin-top: 2rem;
 }
 
 button {
@@ -33,23 +32,19 @@ button {
 }
 
 canvas {
-  width: 100%;
-  max-width: 1000px;
-  margin: auto;
+  max-width: 70%;
+  margin: 2rem auto;
 }
 
-.history-container {
-  border-radius: 5px 0 0 5px;
-  border: 1px solid black;
-  background-color: rgba(0, 0, 0, 0.3);
-  position: fixed;
-  padding: 10px 20px;
-  right: 0;
+#calc-button {
+  margin-left: 50%;
+  transform: translate(-50%);
 }
 
-i {
-  color: white;
-  text-shadow: 10px 10px 10px black;
+.input-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 #input-data {
@@ -62,4 +57,10 @@ i {
 
 .alert {
   display: none;
+}
+
+@media screen and (max-width: 900px) {
+  canvas {
+    max-width: 100%;
+  }
 }
