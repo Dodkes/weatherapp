@@ -3,6 +3,7 @@ const celsiusButton = document.getElementById("celsius-button");
 const fahrenheitButton = document.getElementById("fahrenheit-button");
 const temperatureInput = document.getElementById("temp-input");
 const humidityInput = document.getElementById("humidity-input");
+const messageBlock = document.getElementById("message");
 
 const API_KEY = "6d8196f13596e796cae0b37daa47d6d5";
 let units;
@@ -200,11 +201,11 @@ function updateHistory() {
   const reversedHistory = historyArray.slice().reverse();
 
   reversedHistory.forEach((item, index) => {
-    $(`#${index + 1}`).text(item);
+    document.getElementById(`${index + 1}`).textContent = item;
   });
 }
 updateHistory();
 
 function userMessage(message) {
-  $("#message").text(message);
+  messageBlock.innerText = message;
 }
