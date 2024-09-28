@@ -1,5 +1,41 @@
-// const historyLine = document.querySelectorAll("#historyList li");
+const API_KEY = "6d8196f13596e796cae0b37daa47d6d5";
 let units;
+let data;
+
+async function getAPI() {
+  const promise_1 = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${"Kosice"},SK&appid=${API_KEY}&units=metric`
+  );
+  const promise_2 = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${"Bratislava"},SK&appid=${API_KEY}&units=metric`
+  );
+
+  const promise_3 = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${"Michalovce"},SK&appid=${API_KEY}&units=metric`
+  );
+
+  const promise_4 = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${"Modra"},SK&appid=${API_KEY}&units=metric`
+  );
+
+  const [response_1, response_2, response_3, response_4] = await Promise.all([
+    promise_1,
+    promise_2,
+    promise_3,
+    promise_4,
+  ]);
+
+  data = [
+    await response_1.json(),
+    await response_2.json(),
+    await response_3.json(),
+    await response_4.json(),
+  ];
+  console.log(data);
+  tableData(data);
+}
+
+getAPI();
 
 const historyArray = localStorage.getItem("history")
   ? JSON.parse(localStorage.getItem("history"))
@@ -116,30 +152,30 @@ function indexCalculation(T) {
   hideErrorContainer();
 }
 
-tableData(arrayData);
-
 function tableData(data) {
-  var tableId = document.getElementById("inputData");
+  const tableId = document.getElementById("inputData");
 
   for (var i = 0; i < data.length; i++) {
     var row =
       "<tr>" +
       "<td>" +
-      data[i].applicable_date +
+      data[i].name +
       "</td>" +
       "<td>" +
-      data[i].weather_state_name +
+      data[i].main.temp +
+      "°C" +
       "</td>" +
       "<td>" +
-      data[i].the_temp +
+      data[i].weather[0].description +
       "</td>" +
       "<td>" +
-      data[i].air_pressure +
+      data[i].wind.speed +
+      "m/s" +
       "</td>" +
       "<td>" +
-      data[i].humidity +
-      "</td>" +
-      "</tr>";
+      data[i].main.humidity +
+      "%";
+    "</td>" + "</tr>";
     tableId.innerHTML += row;
   }
 }

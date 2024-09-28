@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
     <!-- chart JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script src="data.js" defer></script>
+    <script src="data.json" defer></script>
     <script src="script.js" defer></script>
     <title>Weather app</title>
 </head>
@@ -32,28 +32,28 @@
           <a class="nav-link" href="#" onclick="active(this.id)" id="calculator-tab">Heat index calculator</a>
         </li>
       </ul>
-<!-- table tab -->
+      <!-- table tab -->
       <div class="table-container">
         <p id="demo"></p>
           <table class="table table-bordered">
             <tr>
-                <th>Datetime</th>
-                <th>Weather State</th>
+                <th>City</th>
                 <th>Temperature</th>
-                <th>Air Pressure</th>
+                <th>Sky</th>
+                <th>Wind speed</th>
                 <th>Humidity</th>
             </tr>
             <tbody id="inputData">
             </tbody>
           </table>
       </div>
-<!-- chart tab -->
+      <!-- chart tab -->
       <div class="chart-container">
           <h1>Chart</h1>
           <div id="legend">temperature</div>
           <canvas id="weatherChart"></canvas>
       </div>
-<!-- calculator tab -->
+      <!-- calculator tab -->
       <div class="calculator-container">
           <h1>Heat index calculator</h1>
           <button class="btn btn-primary" id="celsius-button">Select ℃</button>
@@ -88,7 +88,5 @@
               <strong>Invalid input! </strong><span id="error"></span>
             </div>
     </div>
-
-
 </body>
 </html>
