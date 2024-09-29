@@ -42,8 +42,8 @@ async function getAPI() {
     `https://api.openweathermap.org/data/2.5/weather?q=Leeds,UK&appid=${API_KEY}&units=metric`
   );
 
-  const promise_brisbane = fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=Brisbane,AU&appid=${API_KEY}&units=metric`
+  const promise_gold_coast = fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=Gold%20Coast,AU&appid=${API_KEY}&units=metric`
   );
 
   const [
@@ -52,14 +52,14 @@ async function getAPI() {
     response_modra,
     response_rome,
     response_leeds,
-    response_brisbane,
+    response_gold_coast,
   ] = await Promise.all([
     promise_bratislava,
     promise_michalovce,
     promise_modra,
     promise_rome,
     promise_leeds,
-    promise_brisbane,
+    promise_gold_coast,
   ]);
 
   data = [
@@ -68,7 +68,7 @@ async function getAPI() {
     await response_michalovce.json(),
     await response_rome.json(),
     await response_leeds.json(),
-    await response_brisbane.json(),
+    await response_gold_coast.json(),
   ];
   tableData(data);
   renderChart(
