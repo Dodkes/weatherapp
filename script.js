@@ -154,7 +154,8 @@ function tableData(data) {
       "°C" +
       "</td>" +
       "<td>" +
-      data[i].weather[0].description +
+      `<img width="40px" height="40px" src='http://openweathermap.org/img/wn/${data[i].weather[0].icon}@2x.png'>` +
+      `<p>${data[i].weather[0].description}</p>` +
       "</td>" +
       "<td>" +
       data[i].wind.speed +
