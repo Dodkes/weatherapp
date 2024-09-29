@@ -13,6 +13,11 @@ I have chosen regions where my relatives lives, in this case:
 Rendered to interactive table which includes: `time zone`, `temperature`, `sky condition`, `wind speed`, `humidity`.
 Also color of the table row and icons depends on `temperature`.
 
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+
 ## Technologies used
 - Design: [Bootstrap](https://getbootstrap.com/)
 - Weather API: [OpenWeatherMap](https://openweathermap.org/)
