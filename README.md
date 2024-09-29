@@ -13,10 +13,11 @@ I have chosen regions where my relatives lives, in this case:
 Rendered to interactive table which includes: `time zone`, `temperature`, `sky condition`, `wind speed`, `humidity`.
 Also color of the table row and icons depends on `temperature`.
 
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text |
+*Example*:
+
+| CITY | TIME | TEMPERATURE | SKY | WIND SPEED | HUMIDITY |
+| ----------- | ----------- | --- | ---------- | --------|
+| Gold Coast | 29. 9. - 20:18 h | 19.98°C | <icon> clear sky | 4.63m/s | 84%|
 
 ## Technologies used
 - Design: [Bootstrap](https://getbootstrap.com/)
