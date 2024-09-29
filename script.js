@@ -141,8 +141,26 @@ function tableData(data) {
   const tableId = document.getElementById("input-data");
 
   for (var i = 0; i < data.length; i++) {
+    let className;
+
+    if (data[i].main.temp < 0) {
+      className = "dark-blue";
+    } else if (data[i].main.temp >= 0 && data[i].main.temp < 5) {
+      className = "deep-sky-blue";
+    } else if (data[i].main.temp >= 5 && data[i].main.temp < 10) {
+      className = "cyan";
+    } else if (data[i].main.temp >= 10 && data[i].main.temp < 15) {
+      className = "light-green";
+    } else if (data[i].main.temp >= 15 && data[i].main.temp < 20) {
+      className = "yellow";
+    } else if (data[i].main.temp >= 20 && data[i].main.temp < 25) {
+      className = "orange";
+    } else if (data[i].main.temp >= 25) {
+      className = "red";
+    }
+
     var row =
-      "<tr>" +
+      `<tr class=${className}>` +
       "<td>" +
       data[i].name +
       "</td>" +

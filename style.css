@@ -47,6 +47,34 @@ canvas {
   margin-top: 2rem;
 }
 
+.dark-blue {
+  background-color: rgba(0, 0, 255, 0);
+}
+
+.deep-sky-blue {
+  background-color: rgba(0, 191, 255, 0.3);
+}
+
+.cyan {
+  background-color: rgba(0, 255, 255, 0.3);
+}
+
+.light-green {
+  background-color: rgba(128, 255, 0, 0.3);
+}
+
+.yellow {
+  background-color: rgba(255, 255, 0, 0.6);
+}
+
+.orange {
+  background-color: rgba(255, 166, 0, 0.6);
+}
+
+.red {
+  background-color: rgba(255, 0, 0, 0.7);
+}
+
 #input-data {
   background-color: rgba(0, 0, 255, 0.2);
 }
