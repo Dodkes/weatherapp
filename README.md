@@ -14,10 +14,10 @@ Rendered to interactive table which includes: `time zone`, `temperature`, `sky c
 Also color of the table row and icons depends on `temperature`.
 
 *Example*:
+| CITY       | TIME               | TEMPERATURE | SKY         | WIND SPEED | HUMIDITY |
+|------------|--------------------|-------------|-------------|------------|----------|
+| Gold Coast | 29. 9. - 20:18 h   | 19.98°C     | clear sky   | 4.63 m/s   | 84%      |
 
-| CITY | TIME | TEMPERATURE | SKY | WIND SPEED | HUMIDITY |
-| ----------- | ----------- | --- | ---------- | --------|
-| Gold Coast | 29. 9. - 20:18 h | 19.98°C | <icon> clear sky | 4.63m/s | 84%|
 
 ## Technologies used
 - Design: [Bootstrap](https://getbootstrap.com/)
