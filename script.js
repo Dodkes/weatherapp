@@ -22,9 +22,6 @@ fahrenheitButton.addEventListener("click", () => {
 });
 
 async function getAPI() {
-  const promise_kosice = fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=Kosice,SK&appid=${API_KEY}&units=metric`
-  );
   const promise_bratislava = fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=Bratislava,SK&appid=${API_KEY}&units=metric`
   );
@@ -35,10 +32,6 @@ async function getAPI() {
 
   const promise_modra = fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=Modra,SK&appid=${API_KEY}&units=metric`
-  );
-
-  const promise_vinne = fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=Vinne,SK&appid=${API_KEY}&units=metric`
   );
 
   const promise_rome = fetch(
@@ -54,30 +47,24 @@ async function getAPI() {
   );
 
   const [
-    response_kosice,
     response_bratislava,
     response_michalovce,
     response_modra,
-    response_vinne,
     response_rome,
     response_leeds,
     response_brisbane,
   ] = await Promise.all([
-    promise_kosice,
     promise_bratislava,
     promise_michalovce,
     promise_modra,
-    promise_vinne,
     promise_rome,
     promise_leeds,
     promise_brisbane,
   ]);
 
   data = [
-    await response_kosice.json(),
     await response_bratislava.json(),
     await response_modra.json(),
-    await response_vinne.json(),
     await response_michalovce.json(),
     await response_rome.json(),
     await response_leeds.json(),
