@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 h1 {
   font-family: "Roboto", sans-serif;
 }
@@ -93,4 +97,13 @@ canvas {
   p {
     display: inline;
   }
+}
+
+.tab-content {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-container {
+  min-width: 700px;
 }
