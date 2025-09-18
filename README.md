@@ -1,6 +1,5 @@
 # Weather app API
-App started as my first job interview task.
-After 3 years I decided to fix it and customize for me and my family.
+Customized for me and my family.
 Check it here [Weather App by Dodkes](https://dodkes.github.io/weatherapp/)
 
 ## How it works?
